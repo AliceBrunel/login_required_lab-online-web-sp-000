@@ -13,8 +13,8 @@ class SessionsController < ApplicationController
 
   private
 
-  def destroy
-    session.delete :username
+  def require_login
+    return head(:forbidden) unless session.include? :user_id
   end
 
 end
