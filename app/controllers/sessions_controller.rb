@@ -19,4 +19,7 @@ class SessionsController < ApplicationController
     return head(:forbidden) unless session.include? :user_id
   end
 
+  def current_user 
+    @current_user = Session.find_by(username: session[:username])
+  end 
 end
